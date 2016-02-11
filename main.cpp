@@ -20,7 +20,7 @@ const int EXIT = 3;
     typedef struct {
         int numero;
         bool lliure;
-        bool original;//dyrtyrte
+        bool original;//dyrtyrtegjhkhjkghj
     } Casella;
 
     typedef struct {
@@ -240,8 +240,20 @@ int main()
                 
                 break;
             case DEL_NUM:
+                
+                getCoordenades(cX,cY);
+                
+                if(!sudoku.tauler[cY][cX].lliure){
+
+                    sudoku.tauler[cY][cX].numero=0;
+                    sudoku.tauler[cY][cX].lliure=true;
+                    
+                }else{
+                    cout << "Aquesta posició no està ocupada." <<endl;
+                }               
                 break;
             case EXIT:
+                cout << "Bye." <<endl;
                 break;
             default:
                 break;
