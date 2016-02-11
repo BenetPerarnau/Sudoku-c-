@@ -20,7 +20,7 @@ const int EXIT = 3;
     typedef struct {
         int numero;
         bool lliure;
-        bool original;//d
+        bool original;//dyrtyrte
     } Casella;
 
     typedef struct {
