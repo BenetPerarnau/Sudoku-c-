@@ -9,20 +9,26 @@
 
 using namespace std;
 
-
+//Taulell
 const int N_FILES = 9;
 const int N_COLUM = 9;
+const int N_LLIURES = N_FILES * N_COLUM;
+//Menu
 const int ADD_NUM = 1;
 const int DEL_NUM = 2;
 const int EXIT = 3;
 
-
+/*
+ Estructura Casella que conte la info de les variables que te cada casella del sudoku
+ */
     typedef struct {
         int numero;
         bool lliure;
         bool original;//dyrtyrtegjhkhjkghj
     } Casella;
-
+/*
+ Estructura Sudoku conte una variable casella i el numero de caselles lliures que queden al sudoku.
+ */
     typedef struct {
         Casella tauler[N_FILES][N_COLUM];
         int nLliures;
@@ -51,6 +57,7 @@ void generarTaula(Casella tauler[][N_COLUM]){
 
 }
 void pintarTaula(Casella tauler[][N_COLUM]){
+                   cout << "             SUDOKU            " <<endl;
     for(int i=0; i<N_FILES; i++){
         if(i%3==0) cout << "-------------------------------" <<endl;
         cout << "|";
@@ -188,6 +195,7 @@ int main()
 {
     Sudoku sudoku;
     generarTaula(sudoku.tauler);
+    sudoku.nLliures=N_LLIURES;
     int op;
     
     do{
@@ -224,6 +232,7 @@ int main()
                             if(isValidSubMatriu(sudoku.tauler,cX,cY,num)){
                                 sudoku.tauler[cY][cX].numero=num;
                                 sudoku.tauler[cY][cX].lliure=false;
+                                sudoku.nLliures--;
                             }else{
                                 cout << "Error. El numero "<< num << " ja existeix a la submatriu." <<endl;
                             }
@@ -247,6 +256,7 @@ int main()
 
                     sudoku.tauler[cY][cX].numero=0;
                     sudoku.tauler[cY][cX].lliure=true;
+                    sudoku.nLliures++;
                     
                 }else{
                     cout << "Aquesta posició no està ocupada." <<endl;
